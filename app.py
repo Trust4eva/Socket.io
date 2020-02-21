@@ -5,17 +5,14 @@ import flask_sqlalchemy
 
 app = flask.Flask(__name__)
 import models
-#socketio = flask_socketio.SocketIO(app) 
+socketio = flask_socketio.SocketIO(app) 
 
 @app.route('/')
 #def hello():
  #   return flask.render_template('index.html')
     
 def index():
-    messages = models.Message.query.all()
-    html = ['<li>' + m.text + '</li>' for m in messages]
-    return '<ul>' + ''.join(html) + '</ul>'
-
+    return 'Hello, world!'
     
 if __name__ == '__main__':
     app.run(
@@ -23,7 +20,7 @@ if __name__ == '__main__':
         port=int(os.getenv('PORT', 8080)),
         debug=True
     )
-"""
+
 @socketio.on('connect') 
 def on_connect():
     print('Someone connected!')
@@ -38,4 +35,3 @@ socketio.run(
     port=int(os.getenv('PORT', 8080)),
     debug=True
 )
-"""
